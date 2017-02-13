@@ -24,9 +24,9 @@ func NewRequest(data []byte) (*Request, error) {
 	}
 
 	request.Tags = make(Tags, 4+len(request.TagValue))
-	request.Tags[0] = Tag{Key: "host", Value: request.Hostname}
-	request.Tags[1] = Tag{Key: "server", Value: request.ServerName}
-	request.Tags[2] = Tag{Key: "script", Value: request.ScriptName}
+	request.Tags[0] = Tag{Key: "hostname", Value: request.Hostname}
+	request.Tags[1] = Tag{Key: "server_name", Value: request.ServerName}
+	request.Tags[2] = Tag{Key: "script_name", Value: request.ScriptName}
 	request.Tags[3] = Tag{Key: "status", Value: strconv.Itoa(int(request.Status))}
 
 	for idx, val := range request.TagValue {
