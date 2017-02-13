@@ -22,6 +22,11 @@ func NewRequest(data []byte) (*Request, error) {
 	if err := request.Unmarshal(data); err != nil {
 		return nil, err
 	}
+	
+	retrun FixRequestDictTagsAndTimers(request)
+}
+
+func FixRequestDictTagsAndTimers(request Request) (*Request, error) {
 
 	request.Tags = make(Tags, 4+len(request.TagValue))
 	request.Tags[0] = Tag{Key: "host", Value: request.Hostname}
