@@ -23,10 +23,11 @@ func NewRequest(data []byte) (*Request, error) {
 		return nil, err
 	}
 	
-	retrun FixRequestDictTagsAndTimers(request)
+	r,e := FixRequestDictTagsAndTimers(request)
+	return r, e
 }
 
-func FixRequestDictTagsAndTimers(request Request) (*Request, error) {
+func FixRequestDictTagsAndTimers(request *Request) (*Request, error) {
 
 	request.Tags = make(Tags, 4+len(request.TagValue))
 	request.Tags[0] = Tag{Key: "host", Value: request.Hostname}
